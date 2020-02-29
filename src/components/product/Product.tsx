@@ -19,7 +19,6 @@ interface State {
 
 export default class Product extends Component<Props, State> {
     public state = {};
-
     public render() {
         const { item } = this.props;
         return (
