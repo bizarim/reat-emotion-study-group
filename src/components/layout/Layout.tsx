@@ -49,12 +49,12 @@ class LayoutComponent extends React.Component {
     }
 }
 
-const mapStateToProps = (state: any) => ({
+const mapStateProps = (state: any) => ({
 
 });
 
-const mapDispatchToProps = (dispatch: Dispatch<any>) => ({
+const mapDispatchProps = (dispatch: Dispatch<any>) => ({
 
 });
 
-export const Layout = withRouter(connect(mapStateToProps, mapDispatchToProps)(LayoutComponent));
+export const Layout = withRouter(connect(mapStateProps, mapDispatchProps)(LayoutComponent));

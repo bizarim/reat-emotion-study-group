@@ -23,6 +23,7 @@ export const initialProductState: ProductState = {
 };
 
 export const productReducer = (state = initialProductState, action: ProductAction): ProductState => {
+
     switch (action.type) {
         case PRODUCT_GET_DETAIL_ERR:
             return {

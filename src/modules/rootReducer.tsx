@@ -9,6 +9,6 @@ export interface RootState {
 }
 
 export const rootReducer = combineReducers({
-    productReducer,
+    product: productReducer,
 });
 

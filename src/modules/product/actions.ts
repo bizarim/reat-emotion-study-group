@@ -7,7 +7,7 @@ import {
     PRODUCT_GET_LIST_RES,
 } from './constants';
 import { CommonError } from '../types';
-import { Product, ProductDetail } from './types';
+import { ProductDetail, ProductGetListPayload } from './types';
 
 export interface ProductGetDetailErr {
     type: typeof PRODUCT_GET_DETAIL_ERR;
@@ -35,15 +35,14 @@ export interface ProductGetListReq {
     type: typeof PRODUCT_GET_LIST_REQ;
     payload: {
         category: string;
+        sub: string;
         offset: number;
         page: number;
     };
 }
 export interface ProductGetListRes {
     type: typeof PRODUCT_GET_LIST_RES;
-    payload: {
-        list: Product[];
-    };
+    payload: ProductGetListPayload;
 }
 export type ProductAction = ProductGetDetailErr
     | ProductGetDetailReq
