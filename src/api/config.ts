@@ -3,6 +3,7 @@ import { Config } from './types';
 export const defaultConfig: Config = {
     apiService: {
         auth: '',
+        product: 'http://localhost:9002/api/v2/product',
     },
     withCredentials: true,
     basicToken: '',
