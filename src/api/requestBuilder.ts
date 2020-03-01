@@ -4,7 +4,7 @@ import axios, {
     AxiosRequestConfig,
     AxiosResponse,
 } from 'axios';
-import { auth, withCredentials, basicToken } from './config';
+import { auth, withCredentials, basicToken, product } from './config';
 import { RequestOptions } from '.';
 
 export type HTTPMethod =
@@ -26,12 +26,14 @@ export interface Request {
 
 const getAPI = () => ({
     auth: `${auth()}`,
+    product: `${product()}`,
 });
 
 const buildRequest = (request: Request, configData: RequestOptions) => {
     const { body, method, url } = request;
     const { apiService, authorization } = configData;
     const apis = getAPI();
+
 
     const headers = authorization ?
         { 'content-type': 'multipart/form-data', Authorization: `Basic ${basicToken()}` } :

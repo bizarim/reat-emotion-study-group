@@ -17,3 +17,9 @@ export interface Product {
 export interface ProductDetail {
 
 }
+
+export interface ProductGetListPayload {
+    list: Product[];
+    page: number;
+    total: number;
+}

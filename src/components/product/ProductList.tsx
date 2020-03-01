@@ -61,8 +61,9 @@ export class ProductList extends React.Component<Props> {
         if (items) {
             const newList: Product[][] = [];
             const row = Math.floor(items.length / MAXROW) + (items.length % MAXROW !== 0 ? 1 : 0);
+
             for (let i = 0; i < row; ++i) {
-                const clone = (JSON.parse(JSON.stringify(items)));
+                const clone = JSON.parse(JSON.stringify(items));
                 const start = i * MAXROW;
                 const end = clone.length < (i + 1) * MAXROW ? clone.length : (i + 1) * MAXROW;
                 const list = clone.splice(start, end);
