@@ -7,13 +7,13 @@ interface State {
 
 }
 
-export default class ProductDetail extends Component<Props, State> {
+export class ProductDetailComponent extends Component<Props, State> {
     public state = {};
 
     public render() {
         return (
             <div>
-
+                test
             </div>
         );
     }

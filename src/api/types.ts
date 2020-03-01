@@ -1,6 +1,7 @@
 export interface Config {
-    api: {
-        authUrl: string;
+    apiService: {
+        auth: string;
     };
     withCredentials: boolean;
+    basicToken: string;
 }

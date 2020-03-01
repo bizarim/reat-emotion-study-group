@@ -125,6 +125,9 @@
           height: 350px;
           margin: 10px;
           background-color: cadetblue; }
+          .pg-showcase__body__row__col__item a {
+            color: #000;
+            text-decoration: none; }
           .pg-showcase__body__row__col__item__img {
             background-color: wheat;
             height: 280px;

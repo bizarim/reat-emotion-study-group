@@ -1,10 +1,11 @@
 import { Config } from './types';
 
 export const defaultConfig: Config = {
-    api: {
-        authUrl: '',
+    apiService: {
+        auth: '',
     },
     withCredentials: true,
+    basicToken: '',
 };
 
 export const AppBase = {
@@ -20,5 +21,6 @@ declare global {
 window.env = window.env || defaultConfig;
 AppBase.config = { ...window.env };
 
-export const authUrl = () => AppBase.config.api.authUrl;
+export const auth = () => AppBase.config.apiService.auth;
 export const withCredentials = () => AppBase.config.withCredentials;
+export const basicToken = () => AppBase.config.basicToken;

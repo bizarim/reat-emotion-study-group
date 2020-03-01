@@ -5,6 +5,7 @@ import Login from '../login/Login';
 import NoMatch from '../error/NoMatch';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
+import { ProductDetailComponent } from '../product/ProductDetail';
 
 
 const PublicRoute: React.FC<any> = ({ component: CustomComponent, loading, isLogged, ...res }) => {
@@ -38,6 +39,7 @@ class LayoutComponent extends React.Component {
                     <PublicRoute path="/test" component={Showcase} />
                     <PrivateRoute path="/login" component={Login} />
                     <Route exact={true} path="/" component={Showcase} />
+                    <Route exact={true} path="/product/:id" component={ProductDetailComponent} />
                     <Route exact={true} path="/:category?/:sub?" component={Showcase} />
                     <Route component={NoMatch} />
                 </Switch>

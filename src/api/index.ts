@@ -5,9 +5,11 @@ export * from './types';
 export * from './config';
 
 export interface RequestOptions {
-    apiVersion: 'auth';
+    apiService: 'auth' | 'product';
     withHeaders?: boolean;
+    authorization?: boolean;
 }
+
 
 export type RequestBody = JsonBody | FormData;
 
@@ -56,9 +58,3 @@ export const API: ApiWrapper = {
             url,
         }, config),
 };
-
-const conf: RequestOptions = {
-    apiVersion: 'auth',
-};
-
-export const changePassword = async (body: any) => API.post(conf)('/identity/users/password/confirm_code', body);

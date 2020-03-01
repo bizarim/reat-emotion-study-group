@@ -1,12 +1,13 @@
 import React from 'react';
-import Product, { IProduct } from './Product';
+import { Product } from '../../modules/types';
+import ProductComponent from './Product';
 
 const MAXROW = 4;
 const MAXCOL = 2;
 
 interface Props {
     category: string;
-    items: IProduct[];
+    items: Product[];
 }
 
 export class ProductList extends React.Component<Props> {
@@ -22,7 +23,7 @@ export class ProductList extends React.Component<Props> {
         );
     }
 
-    private renderRow = (items: IProduct[], idx: number) => {
+    private renderRow = (items: Product[], idx: number) => {
         const list = this.getCol(items);
         return (
             <div key={idx} className="pg-showcase__body__row">
@@ -31,17 +32,17 @@ export class ProductList extends React.Component<Props> {
         );
     }
 
-    private renderCol = (items: IProduct[], idx: number) => {
+    private renderCol = (items: Product[], idx: number) => {
         return (
             <div key={idx} className="pg-showcase__body__row__col">
-                {items.map((item, index) => <Product key={index} item={item} />)}
+                {items.map((item, index) => <ProductComponent key={index} item={item} />)}
             </div>
         );
     }
 
-    private getCol = (items: IProduct[]): IProduct[][] => {
+    private getCol = (items: Product[]): Product[][] => {
         if (items) {
-            const newList: IProduct[][] = [];
+            const newList: Product[][] = [];
             const col = Math.floor(items.length / MAXCOL) + (items.length % MAXCOL !== 0 ? 1 : 0);
             for (let i = 0; i < col; ++i) {
                 const clone = (JSON.parse(JSON.stringify(items)));
@@ -56,9 +57,9 @@ export class ProductList extends React.Component<Props> {
         return [];
     }
 
-    private getProductList = (items: IProduct[]): IProduct[][] => {
+    private getProductList = (items: Product[]): Product[][] => {
         if (items) {
-            const newList: IProduct[][] = [];
+            const newList: Product[][] = [];
             const row = Math.floor(items.length / MAXROW) + (items.length % MAXROW !== 0 ? 1 : 0);
             for (let i = 0; i < row; ++i) {
                 const clone = (JSON.parse(JSON.stringify(items)));

@@ -4,7 +4,8 @@ import axios, {
     AxiosRequestConfig,
     AxiosResponse,
 } from 'axios';
-import { authUrl, withCredentials } from './config';
+import { auth, withCredentials, basicToken } from './config';
+import { RequestOptions } from '.';
 
 export type HTTPMethod =
     'get'
@@ -17,42 +18,29 @@ export interface JsonBody {
     [key: string]: any;
 }
 
-export interface RequestOptions {
-    apiVersion: 'auth';
-    withHeaders?: boolean;
-}
-
 export interface Request {
     method: HTTPMethod;
     url: string;
     body?: JsonBody;
 }
 
-export interface ApiVariety {
-    auth: string;
-}
-
 const getAPI = () => ({
-    auth: `${authUrl()}`,
+    auth: `${auth()}`,
 });
 
 const buildRequest = (request: Request, configData: RequestOptions) => {
     const { body, method, url } = request;
-    const { apiVersion } = configData;
-    const api = getAPI();
+    const { apiService, authorization } = configData;
+    const apis = getAPI();
 
-    const contentType = body instanceof FormData
-        ? 'multipart/form-data'
-        : 'application/json';
+    const headers = authorization ?
+        { 'content-type': 'multipart/form-data', Authorization: `Basic ${basicToken()}` } :
+        body instanceof FormData ? { 'content-type': 'multipart/form-data' } : { 'content-type': 'application/json' };
 
-    const headers = {
-        'content-type': contentType,
-    };
-
-    const apiUrl = api[apiVersion];
+    const serviceUrl = apis[apiService];
 
     const requestConfig: AxiosRequestConfig = {
-        baseURL: apiUrl,
+        baseURL: serviceUrl,
         data: body,
         headers,
         method,

@@ -1,4 +1,5 @@
-import { all } from 'redux-saga/effects';
+import { all, call } from 'redux-saga/effects';
+import { rootProductSaga } from './product';
 
 // [ Redux 만들기 ] step 5: saga 등록
 // saga 등록
@@ -6,6 +7,6 @@ import { all } from 'redux-saga/effects';
 // tslint:disable-next-line:no-default-export
 export function* rootSaga() {
     yield all([
-
+        call(rootProductSaga),
     ]);
 }
