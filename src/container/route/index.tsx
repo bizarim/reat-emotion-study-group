@@ -1,12 +1,11 @@
 import React from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import { Showcase } from '../showcase/Showcase';
-import Login from '../login/Login';
-import NoMatch from '../error/NoMatch';
+import { Showcase } from '../../components/showcase/Showcase';
+import Login from '../../components/login/Login';
+import NoMatch from '../../components/error/NoMatch';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { ProductDetailComponent } from '../product/ProductDetail';
-
+import { ProductDetailComponent } from '../../components/product/ProductDetail';
 
 const PublicRoute: React.FC<any> = ({ component: CustomComponent, loading, isLogged, ...res }) => {
     if (loading) {
