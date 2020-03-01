@@ -1,24 +1,47 @@
 import React from 'react';
 import { Product } from '../../modules/types';
 import ProductComponent from './Product';
+import { RootState } from '../../modules/rootReducer';
+import { selectProductList, productGetListReq } from '../../modules/product';
+import { MapDispatchToPropsFunction, connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 const MAXROW = 4;
 const MAXCOL = 2;
 
-interface Props {
-    category: string;
-    items: Product[];
+interface ReduxProps {
+    list: Product[];
 }
 
-export class ProductList extends React.Component<Props> {
+interface OwnProps {
+
+}
+
+interface DispatchProps {
+    productGetListReq: typeof productGetListReq;
+}
+
+type Props = ReduxProps & OwnProps & DispatchProps;
+
+class ProductListComponent extends React.Component<Props> {
+
+    // public UNSAFE_componentWillReceiveProps(next: Props) {
+    //     console.log('UNSAFE_componentWillReceiveProps');
+    //     console.log(next.list);
+    // }
+
+    // public componentDidUpdate(prevProps: Props) {
+    //     console.log('componentDidUpdate');
+    //     console.log(prevProps.list);
+    // }
 
     public render() {
-        const { items } = this.props;
-        const list = this.getProductList(items);
+        const { list } = this.props;
+        const items = this.getProductList(list);
 
         return (
             <div className="pg-showcase__body">
-                {list.map((item, index) => this.renderRow(item, index))}
+                {items.map((item, index) => this.renderRow(item, index))}
             </div>
         );
     }
@@ -75,3 +98,16 @@ export class ProductList extends React.Component<Props> {
         return [];
     }
 }
+
+
+const mapStateProps = (state: RootState): ReduxProps => ({
+    list: selectProductList(state),
+});
+
+const mapDispatchProps: MapDispatchToPropsFunction<DispatchProps, {}> =
+    dispatch => ({
+        productGetListReq: payload => dispatch(productGetListReq(payload)),
+    });
+
+export const ProductList = withRouter(connect(mapStateProps, mapDispatchProps)(ProductListComponent));
+

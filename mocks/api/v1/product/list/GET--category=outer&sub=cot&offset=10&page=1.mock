@@ -7,7 +7,7 @@ access-control-allow-headers: Origin, X-Requested-With, Content-Type, Accept, Au
     "list": [
         { "id": 21, "category": "outer", "subCategory": "cot",  "oriPrice": 1000, "salePrice": 500, "name": "outer1", "tag": "hot" },
         { "id": 22, "category": "outer", "subCategory": "cot",  "oriPrice": 2000, "salePrice": 0,   "name": "outer2", "tag": "hot" },
-        { "id": 23, "category": "outer", "subCategory": "cot",  "oriPrice": 3000, "salePrice": 0,   "name": "outer3", "tag": "best" },
+        { "id": 23, "category": "outer", "subCategory": "cot",  "oriPrice": 3000, "salePrice": 0,   "name": "outer3", "tag": "best" }
     ],
     "page": 1,
     "total": 7
